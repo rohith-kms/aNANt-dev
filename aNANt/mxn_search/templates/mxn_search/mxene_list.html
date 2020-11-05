@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mxn_search/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width initial-scale=1.0">
+    <meta name="description" content="computational database of mxenes">
+    <meta name="keywords" content="mxene, mxenes, mxene database">
+    <meta name="author" content="Rohith K.M.S">
+    <title>The MXene Database</title>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+  </head>
+  <body>
+
+      <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="../../">Home</a>
+              <a href="../../about/">About</a>
+              <a href="../../publications/">Publications</a>
+<!-- <a href="acknowledgements/">Acknowledgements</a> -->
+              <a href="../../contact/">Contact Us</a>
+              
+            </nav>
+
+    </header>
+
+    <div class="searchResults">
+
+      <h1>{{ number_of_results }} results found</h1>
+      
+      <a href="../" style="float:right; margin-right:25px;">&laquo; Go back to search</a>
+      <br>
+
+      {% block content %}
+
+      <table>
+        {% if mxenes %}
+        <tr>
+          <th>S.No</th>
+          <th>MXene name</th>
+          <th>Lattice constant (&#8491;)</th>
+          <th>Band Gap (eV)</th>
+        </tr>
+        {% endif %}
+
+        {% for mxene in mxenes %}
+          <tr>
+            <td>{{forloop.counter|add:mxenes.start_index|add:-1}}</td>
+            <td>
+              <a href="{% url 'details' pk=mxene.pk %}">
+              {{mxene.M1}}-{{mxene.M2}}-{{mxene.X}}-{{mxene.T1}}-{{mxene.T2}}</a>
+            </td>
+            <td>{{mxene.Lc}}</td>
+            {% if mxene.bands_image %}
+            <td>{{mxene.Bg}}</td>
+            {% else %}
+            <td>-</td>
+            {% endif %}
+          </tr>
+        {% empty %}
+          <h1>Sorry. No matching Mxene in the database</h1>
+        {% endfor %}
+      </table>
+      <center>
+      <div class="pages">
+      {% if mxenes.has_other_pages %}
+        <ul class="pagination">
+            {% if mxenes.has_previous %}
+              <li><a href="?page={{ mxenes.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% if mxenes.paginator.num_pages <= 10 %}
+
+              {% for i in mxenes.paginator.page_range %}
+                {% if mxenes.number == i %}
+                  <li class="active"><span>{{ i }}</span></li>
+                {% else %}
+                  <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+              {% endfor %}
+
+            {% else %}
+
+              {% if mxenes.number < 5 %}
+
+                {% for i in mxenes.paginator.page_range %}
+                  {% if mxenes.number == i %}
+                    <li class="active"><span>{{ i }}</span></li>
+                  {% else %}
+                    {% if i <= 10 %}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+
+              {% elif mxenes.number > mxenes.paginator.num_pages|add:"-5" %}
+
+                {% for i in mxenes.paginator.page_range %}
+                  {% if mxenes.number == i %}
+                    <li class="active"><span>{{ i }}</span></li>
+                  {% else %}
+                    {% if i > mxenes.paginator.num_pages|add:"-10" %}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+
+              {% else %}
+
+                {% for i in mxenes.paginator.page_range %}
+                  {% if mxenes.number == i %}
+                    <li class="active"><span>{{ i }}</span></li>
+                  {% else %}
+                    {% if i > mxenes.number|add:"-5" and i < mxenes.number|add:"5"%}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+
+              {% endif %}
+            {% endif %}
+
+
+            {% if mxenes.has_next %}
+              <li><a href="?page={{ mxenes.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+      </div>
+    </center>
+
+        {% endif %}
+
+      {% endblock %}
+
+    </div>
+
+    <div class="container" style="height: 100px;">
+
+    </div>
+
+    <footer>
+    <p>Developers: KMS Rohith, A C Rajan, A Mishra, S Satsangi, A Singla and A K Singh</p>
+    <p>Computing Facilities: Materials Research Center and, Supercomputer Education and Research Center - Indian Institute of Science</p>
+    </footer>
+    
+    </body>
+
+
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<title>Super-Lightweight Jmol Testing</title>
+<head>
+{% load static %}
+<meta charset="utf-8">
+<script type="text/javascript" src="{% static 'mxn_search/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'mxn_search/JSmol.lite.nojq.js' %}"></script>
+
+<!--
+
+see lite.htm for other options
+
+-->
+
+<script type="text/javascript">
+
+var Info;
+
+;(function() {
+
+
+Info = {
+	width: 500,
+	height: 500,
+	debug: true,
+	color: "0xC0C0C0",
+	addSelectionOptions: true,
+	serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+	use: "HTML5",
+	readyFunction: null,
+	src: "{% static 'mxn_search/jaj1.mol' %}",
+    bondWidth: 4,
+    zoomScaling: 1.5,
+    pinchScaling: 2.0,
+    mouseDragFactor: 0.5,
+    touchDragFactor: 0.15,
+    multipleBondSpacing: 4,
+    spinRateX: 0,
+    spinRateY: 0,
+    spinFPS: 20,
+    spin:false,
+    debug: true
+}
+
+})();
+
+
+
+</script>
+</head>
+<body>
+<br>
+benchut
+<img src="{% static 'mxn_search/logo.png' %}" alt="" width="200px">
+<script>
+
+Jmol.getTMApplet("jmol", Info)
+
+</script>
+
+</body>
+</html>

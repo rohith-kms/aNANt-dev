@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <title>aNANt</title>
+  </head>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120796848-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120796848-2');
+</script>
+
+  <body>
+
+    <style>
+    #showcase{
+
+      display: grid;
+      grid-template-columns: 1fr 7fr 1fr;
+      /*min-height: 300px;*/
+      background-color: white;
+      background-size: cover;
+      background-image: url("{% static 'frontpage/images/boa9.png' %}");
+      background-size: 40%;
+      background-repeat: repeat;
+      text-align: center;
+      padding: 20px 40px;
+      border-bottom: 5px solid #df861d;
+    }
+
+    </style>
+
+    <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href=""  class="current">Home</a>
+              <a href="about/">About</a>
+              <a href="publications/">Publications</a>
+
+              <a href="contact/">Contact Us</a>
+             
+
+            </nav>
+
+    </header>
+
+
+
+    <section id="showcase">
+      <div class="container">
+      <style>
+       h5 { text-shadow: 2px 2px #FF0000; }
+      </style>
+
+        <h5><h1>Welcome to aNANt</h1></h5>
+        <p>aNANt is an initiative of <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, <a href="http://mrc.iisc.ac.in" target="blank">Materials Research Centre</a>, <a href="http://iisc.ac.in" target="blank">Indian Institute of Science</a> Bangalore to develop and host an open-access online repository of functional materials. aNANt database shares the structures and electronic properties of computationally designed two-dimensional functional materials in a single platform. Currently, it hosts over 23,000 materials data. </p>
+      </div>
+    </section>
+
+
+    <section id="apps">
+      <h1 class="apphead">Apps</h1>
+
+      <a href="mxenedb/" class="appclick">
+      <div class="app">
+        <h1>MXene database</h1>
+        <img src="{% static 'frontpage/images/mxenedb.png' %}"  alt="">
+        <p>Contains details of over 23,000 MXenes, with downloadable POSCARs</p>
+      </div>
+      </a>
+
+      <a href="">
+      <div class="appinactive">
+        <h1>Thermoelectric materials</h1>
+        <img src="{% static 'frontpage/images/thermo.png' %}"  alt="">
+        <p>Database of Thermoelectric materials. <span>Coming Soon!</span></p>
+      </div>
+      </a>
+
+      <a href="">
+      <div class="appinactive">
+        <h1>Post Processing</h1>
+        <img src="{% static 'frontpage/images/gears.png' %}"  alt="">
+        <p>Some useful post processing utilities. <span>Coming Soon!</span></p>
+      </div>
+      </a>
+
+    </section>
+
+    <footer>
+      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
+      <p>By using this site you are accepting the <a href={% static 'frontpage/TermsAndConditions.txt' %}>Terms and Conditions</a></p>
+    </footer>
+
+
+  </body>
+</html>

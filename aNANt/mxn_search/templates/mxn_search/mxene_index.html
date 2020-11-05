@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mxn_search/style.css'%}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width initial-scale=1.0">
+    <meta name="description" content="computational database of mxenes">
+    <meta name="keywords" content="mxene, mxenes, mxene database">
+    <meta name="author" content="Rohith K.M.S">
+    <title>The MXene Database</title>
+
+    <style media="screen">
+    #showcase{
+      min-height: 300px;
+      background-color: #d6e8fb;
+      background-size: cover;
+
+      text-align: center;
+      color: #0c4a8a;
+      padding: 20px 40px;
+      border-bottom: 5px solid #c2c2c2;
+    }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <div id="logo">
+          <img src="{% static 'mxn_search/logo.png' %}" alt="">
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Search</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>Welcome to the MXene database.</h1>
+        <p>MXenes are a class of two-dimensional inorganic compounds. These materials consist of few atoms thick layers of transition metal carbides, nitrides, or carbonitrides. MXenes combine metallic conductivity of transition metal carbides and hydrophilic nature.</p>
+      </div>
+    </section>
+
+    <section id="search">
+      <h1>Search for MXenes here</h1>
+      <p>MXenes have M1 & M2 transition elements, X Carbon/Nitrogen and T1 and T2 functional groups.</p>
+      <p>Choose M1, M2, X, T1 and T2 from the periodic table given below.</p>
+      <p>To set a field to empty, click on the respective field.</p>
+
+
+
+
+      <!-- Form being returned for search -->
+
+      <form class="search-form" action="/list/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <div class="wrap" style="display:block;">
+          <button type="submit" name="button" class="searchButt">Search!</button>
+          <button type="button" name="button" class="clearButt">Clear</button>
+        </div>
+
+      </form>
+
+
+
+
+
+      <!-- periodic table -->
+
+
+      <section id="ptable">
+        <table id="elements">
+
+            <tr>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank">M1</td>
+            <td class="blank"></td>
+            <td class="blank">M2</td>
+            <td class="blank"></td>
+            <td class="blank">X</td>
+            <td class="blank"></td>
+            <td class="blank">T1</td>
+            <td class="blank"></td>
+            <td class="blank">T2</td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            </tr>
+
+            <tr>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="placeholder metal" id="M1"></td>
+            <td class="blank"></td>
+            <td class="placeholder metal" id="M2"></td>
+            <td class="blank"></td>
+            <td class="placeholder carnit" id="X"></td>
+            <td class="blank"></td>
+            <td class="placeholder funct" id="T1"></td>
+            <td class="blank"></td>
+            <td class="placeholder funct" id="T2"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            </tr>
+
+            <tr>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            </tr>
+
+            <tr>
+            <td class="box funct" id="H"> H </td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="box gray"> He </td>
+            </tr>
+
+
+            <tr>
+            <td class="box"> Li </td>
+            <td class="box"> Be </td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="box"> B </td>
+            <td class="box carnit" id="C"> C </td>
+            <td class="box carnit" id="N"> N </td>
+            <td class="box funct" id="O"> O </td>
+            <td class="box funct" id="F"> F </td>
+            <td class="box"> Ne </td>
+            </tr>
+
+            <tr>
+            <td class="box"> Na </td>
+            <td class="box"> Mg </td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="box"> Al </td>
+            <td class="box"> Si </td>
+            <td class="box"> P </td>
+            <td class="box"> S </td>
+            <td class="box funct" id="Cl"> Cl </td>
+            <td class="box"> Ar </td>
+            </tr>
+
+            <tr>
+            <td class="box"> K </td>
+            <td class="box"> Ca </td>
+            <td class="box metal" id="Sc"> Sc</td>
+            <td class="box metal" id="Ti"> Ti</td>
+            <td class="box metal" id="V"> V </td>
+            <td class="box metal" id="Cr"> Cr </td>
+            <td class="box"> Mn </td>
+            <td class="box"> Fe </td>
+            <td class="box"> Co </td>
+            <td class="box"> Ni </td>
+            <td class="box"> Cu </td>
+            <td class="box"> Zn </td>
+            <td class="box"> Ga </td>
+            <td class="box"> Ge </td>
+            <td class="box"> As </td>
+            <td class="box"> Se </td>
+            <td class="box funct" id="Br"> Br </td>
+            <td class="box"> Kr </td>
+            </tr>
+
+            <tr>
+            <td class="box"> Rb </td>
+            <td class="box"> Sr </td>
+            <td class="box metal" id="Y"> Y </td>
+            <td class="box metal" id="Zr"> Zr </td>
+            <td class="box metal" id="Nb"> Nb </td>
+            <td class="box metal" id="Mo"> Mo </td>
+            <td class="box"> Tc </td>
+            <td class="box"> Ru </td>
+            <td class="box"> Rh </td>
+            <td class="box"> Pd </td>
+            <td class="box"> Ag </td>
+            <td class="box"> Cd </td>
+            <td class="box"> In </td>
+            <td class="box"> Sn </td>
+            <td class="box"> Sb </td>
+            <td class="box"> Te </td>
+            <td class="box"> I </td>
+            <td class="box"> Xe </td>
+            </tr>
+
+            <tr>
+            <td class="box"> Cs </td>
+            <td class="box"> Ba </td>
+            <td class="blank"></td>
+            <td class="box metal" id="Hf"> Hf </td>
+            <td class="box metal" id="Ta"> Ta </td>
+            <td class="box metal" id="W"> W </td>
+            <td class="box"> Re </td>
+            <td class="box"> Os </td>
+            <td class="box"> Ir </td>
+            <td class="box"> Pt </td>
+            <td class="box"> Au </td>
+            <td class="box"> Hg </td>
+            <td class="box"> Ti </td>
+            <td class="box"> Pb </td>
+            <td class="box"> Bi </td>
+            <td class="box"> Po </td>
+            <td class="box"> At </td>
+            <td class="box"> Rn </td>
+            </tr>
+
+
+            <tr>
+            <td class="box"> Fr </td>
+            <td class="box"> Ra </td>
+            <td class="blank"></td>
+            <td class="box"> Rf </td>
+            <td class="box"> Db </td>
+            <td class="box"> Sg </td>
+            <td class="box"> Bh </td>
+            <td class="box"> Hs </td>
+            <td class="box"> Mt </td>
+            <td class="box"> Ds </td>
+            <td class="box"> Rg </td>
+            <td class="box"> Cn </td>
+            <td class="box"> Uut </td>
+            <td class="box"> Uuq </td>
+            <td class="box"> UuP </td>
+            <td class="box"> Uuh </td>
+            <td class="box"> Uus </td>
+            <td class="box"> Uuo </td>
+            </tr>
+
+            <tr>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            <td class="blank"></td>
+            </tr>
+
+            <tr>
+            <td class="box funct" id="OH">OH</td>
+            <td class="blank"></td>
+            <td class="box funct" id="NO">NO</td>
+            <td class="blank"></td>
+            <td class="box funct" id="CN">CN</td>
+            <td class="blank"></td>
+            <td class="box funct" id="PO">PO</td>
+            <td class="blank"></td>
+            <td class="box funct" id="OBr">OBr</td>
+            <td class="blank"></td>
+            <td class="box funct" id="OCl">OCl</td>
+            <td class="blank"></td>
+            <td class="box funct" id="SCN">SCN</td>
+            <td class="blank"></td>
+            <td class="box funct" id="NCS">NCS</td>
+            <td class="blank"></td>
+            <td class="box funct" id="OCN">OCN</td>
+            </tr>
+
+
+        </table>
+      </section>
+
+    <div class="container" style="height: 100px;">
+
+    </div>
+
+
+
+    <footer>
+<p><b>Calculation details: </b>Structure optimization and band gap calculation of the bb’ phase of MXene are performed by density functional theory (DFT) using the Vienna ab-initio simulation package (VASP). Electronic exchange correlations are treated by the Perdew-Burke-Ernzerhof (PBE) parameterization of GGA, and core-valance electron interactions are represented by projector augmented wave (PAW) potentials. Optimized plane wave basis set, fine k-grid and converged force criteria are used to optimize the structures.</p>
+
+      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
+
+<p><b>Disclaimer :</b> By using this site you acknowledge to agree the following:<br />
+
+The data in this database is computed and may not be accurate enough for your application. The developers, contributors and hosts are not liable for any inaccuracies in the data or consequences thereof. <br />
+
+You also agree not to use automated scripts to collect large fractions of the database without explicit permission from the hosts. If you plan to download large fraction of database, email us at anant@mrc.iisc.ac.in. <br />
+
+ 
+    </footer>
+
+  </body>
+
+  <script type="text/javascript">
+
+  /* Field related Javascript */
+
+  var marray = ['',''];
+  var x = '';
+  var tarray = ['',''];
+  var resVisible = 0;
+
+  function update_details() {
+
+    // Update HTML
+    $('#M1').html(marray[0]);
+    $('#M2').html(marray[1]);
+    $('#X').html(x);
+    $('#T1').html(tarray[0]);
+    $('#T2').html(tarray[1]);
+
+    // Update form fields
+    $('#id_M1').attr('value',marray[0]);
+    $('#id_M2').attr('value',marray[1]);
+    $('#id_X').attr('value',x);
+    $('#id_T1').attr('value',tarray[0]);
+    $('#id_T2').attr('value',tarray[1]);
+  }
+
+  function clear_details(){
+
+    marray = ['',''];
+    x = '';
+    tarray = ['',''];
+
+    update_details();
+  }
+
+  // Box click functions
+
+  // Periodic table boxes
+
+  $('.box.carnit').click(function(e){
+    x = e.target.id;
+    update_details();
+  });
+
+  $('.box.metal').click(function(e){
+    if (marray[0]=='') {
+      marray[0] = e.target.id;}
+
+    else if (marray[1]=='') {
+      marray[1] = e.target.id;}
+
+    else {
+      marray.push(e.target.id);
+      marray.shift();}
+
+    update_details();
+  });
+
+  $('.box.funct').click(function(e){
+    if (tarray[0]=='') {
+      tarray[0] = e.target.id;}
+
+    else if (tarray[1]=='') {
+      tarray[1] = e.target.id;}
+
+    else {
+      tarray.push(e.target.id);
+      tarray.shift();}
+
+    update_details();
+  });
+  // Top Boxes
+
+  $('#M1').click(function(e){
+    marray[0] = '';
+    update_details();
+  });
+  $('#M2').click(function(e){
+    marray[1] = '';
+    update_details();
+  });
+  $('#X').click(function(e){
+    x = '';
+    update_details();
+  });
+  $('#T1').click(function(e){
+    tarray[0] = '';
+    update_details();
+  });
+  $('#T2').click(function(e){
+    tarray[1] = '';
+    update_details();
+  });
+
+  $('.searchButt').click(function(e){
+    $('.searchResults').show();
+  });
+
+  $('.clearButt').click(function(e){
+    $('.search-form')[0].reset()
+    clear_details();
+  });
+
+
+
+
+  </script>
+
+</html>

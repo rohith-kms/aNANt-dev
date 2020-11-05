@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
+    <title>aNANt</title>
+  </head>
+  <body>
+
+    <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="../">Home</a>
+              <a href="../about/">About</a>
+              <a href="../publications/">Publications</a>
+<!-- <a href="acknowledgements/">Acknowledgements</a> -->
+              <a href="../contact/"  class="current">Contact Us</a>
+              
+
+            </nav>
+
+    </header>
+
+
+    <section id="content">
+      <div class="container">
+      <style>
+       h5 { text-shadow: 2px 2px #FF0000; }
+      </style>
+
+        <h5><h1>Contact Us</h1></h5>
+        <p>Email-id: anant@mrc.iisc.ac.in</p>
+
+      </div>
+    </section>
+
+    <footer>
+      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
+    </footer>
+
+
+  </body>
+</html>

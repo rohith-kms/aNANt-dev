@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mxn_search/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width initial-scale=1.0">
+    <meta name="description" content="computational database of mxenes">
+    <meta name="keywords" content="mxene, mxenes, mxene database">
+    <meta name="author" content="Rohith K.M.S">
+
+    <script type="text/javascript" src="{% static 'mxn_search/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mxn_search/JSmol.lite.nojq.js' %}"></script>
+
+    <!-- Structure Display Options -->
+
+    <!-- POSCAR FILE
+    {{poscar_content}}
+    -->
+
+    <!-- MOL FILE
+    {{mol}}
+    -->
+
+    <script type="text/javascript">
+
+    var Info;
+
+    ;(function() {
+
+
+    Info = {
+    	width: 400,
+    	height: 400,
+    	debug: false,
+    	color: "white",
+    	addSelectionOptions: false,
+    	serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+    	use: "HTML5",
+    	readyFunction: null,
+    	defaultModel: "",
+        bondWidth: 4,
+        zoomScaling: 1.7,
+        pinchScaling: 2.0,
+        mouseDragFactor: 0.5,
+        touchDragFactor: 0.15,
+        multipleBondSpacing: 4,
+        spinRateX: 0.2,
+        spinRateY: 0.5,
+        spinFPS: 20,
+        spin:false,
+        debug: false
+    }
+
+    })();
+
+    $(window).ready(function() {
+      Jmol._document = null;
+      Jmol.getTMApplet("jmol", Info);
+      $("#apphere").html(jmol._code);
+      var mol = $('html').html().split("MOL FILE\n")[1].split("-->")[0];
+
+    	jmol.__loadModel(mol);
+
+
+    });
+
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    </script>
+
+
+    <title>The MXene Database</title>
+
+    <style media="screen">
+    #showcase{
+      min-height: 300px;
+      background-color: #d6e8fb;
+      background-image: url("{% static 'mxn_search/cover.png'%}");
+      background-size: cover;
+
+      text-align: center;
+      color: #0c4a8a;
+      padding: 20px 40px;
+      border-bottom: 5px solid #c2c2c2;
+    }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+  </head>
+  <body>
+
+      <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="../../">Home</a>
+              <a href="../../about/">About</a>
+              <a href="../../publications/">Publications</a>
+<!-- <a href="acknowledgements/">Acknowledgements</a> -->
+              <a href="../../contact/">Contact Us</a>
+
+            </nav>
+
+    </header>
+
+
+    <div class="mxnDetails">
+
+      <div class="mxnheading">
+          <h1>{{mxene.M1}}-{{mxene.M2}}-{{mxene.X}}-{{mxene.T1}}-{{mxene.T2}}</h1>
+      </div>
+        <a href="../" style="grid-column:3/4; grid-row:2; justify-self:end; float:right; margin-right:25px;">&laquo; Go back to search</a>
+        <a href="javascript:history.back()" style="grid-column:2/3; grid-row:2; justify-self:start; float:right; margin-right:25px;">&laquo; Go back to list</a>
+      <br>
+
+
+        <div class="imageBox">
+            <div id="apphere"></div>
+
+        </div>
+
+
+        <div class="poscar">
+
+          <textarea name="name" rows="8" cols="80">{{poscar_content}}</textarea>
+
+          <!-- old download button - only POSCAR
+          <a href="download_poscar/({{mxene.pk}})" class="downloadButt">Download POSCAR</a>
+          -->
+
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Download</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="download_poscar/({{mxene.pk}})">POSCAR</a>
+              <!--  <a href="download_xyz/({{mxene.pk}})">xyz</a>  -->
+              <a href="download_cif/({{mxene.pk}})">cif</a>
+            </div>
+          </div>
+
+        </div>
+
+      <!--
+
+      <div class="bandStructure">
+        <img src="images/band-structure-plot.png" alt="">
+      </div>
+
+    -->
+
+      <!--
+
+      <div class="properties">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>Lattice Constant</td>
+            <td>{{mxene.Lc}}</td>
+          </tr>
+          <tr>
+            <td>Band Gap</td>
+            <td>{{mxene.Bg}}</td>
+          </tr>
+          <tr>
+            <td>Magnetic Moment</td>
+            <td>{{mxene.Mm}}</td>
+          </tr>
+        </table>
+      </div>
+
+    -->
+
+    <div class="lc">
+      <span>click and drag to rotate the structure</span>
+      <br>
+      <p>Lattice constant = {{mxene.Lc}} &#8491;</p>
+    </div>
+
+    <div class="bandStructure">
+      {% if mxene.bands_image %}
+      <img src="/mxenedb{{mxene.bands_image.url}}" alt="">
+      <p>Band Gap = {{mxene.Bg}} eV</p>
+      {% endif %}
+    </div>
+
+
+      <div class="spacer">
+      </div>
+
+
+
+    </div>
+
+    <footer>
+    <p>Developers: KMS Rohith, A C Rajan, A Mishra, S Satsangi, A Singla and A K Singh</p>
+<p><b>Calculation details: </b>Structure optimization and band gap calculation of MXene are performed by 
+density functional theory (DFT) with the Perdew-Burke-Ernzerhof (PBE) exchange-correlation approximation using projector augmented wave (PAW) potentials and plane waves, as implemented in the Vienna ab-initio simulation package (VASP).</p>
+
+    <p>Computing Facilities: Materials Research Center and, Supercomputer Education and Research Center - Indian Institute of Science</p>
+    </footer>
+
+    </body>
+
+
+
+</html>

@@ -1,0 +1,13 @@
+Terms and conditions:
+
+By using this site you acknowledge to agree the following:
+
+	- The data in this database is computed and may not be accurate enough for your application.
+
+	- The developers, contributors and hosts are not liable for any inaccuracies in the data or consequences thereof.
+
+	- If you plan to download large fraction of database, email us at anant@mrc.iisc.ac.in  
+
+
+License:
+	- This site is released under GNU General Publishing License v3. Please see https://www.gnu.org/licenses/gpl-3.0.en.html for more details.
