@@ -71,9 +71,9 @@ def details(request,pk):
 
     structure = ase.io.read(poscar_file.url)
     supercell = ase.build.make_supercell(structure,[[4,0,0],[0,4,0],[0,0,1]])
-    ase.io.write('/home/abhishek/aNANt/abc.xyz',supercell,'xyz')
-    os.system('babel -xyz /home/abhishek/aNANt/abc.xyz -mol /home/abhishek/aNANt/abc.mol')
-    with open('/home/abhishek/aNANt/abc1.mol') as f:
+    ase.io.write('abc.xyz',supercell,'xyz')
+    os.system('babel -xyz abc.xyz -mol abc.mol')
+    with open('abc1.mol') as f:
         mol = f.read()
 
 #    os.remove('abc.xyz')
@@ -117,12 +117,12 @@ def download_cif(request,pk):
     poscar_content = str(poscar_content)[2:-3].replace('\\n','\n').replace('\\t','\t')
 
     structure = ase.io.read(poscar_file.url)
-    ase.io.write('/home/abhishek/aNANt/temp.cif',structure,'cif')
+    ase.io.write('temp.cif',structure,'cif')
 
     #poscar_path = poscar_file.url
     #file_path = os.path.join(settings.MEDIA_ROOT,poscar_path)
 
-    file_path='/home/abhishek/aNANt/temp.cif'
+    file_path='temp.cif'
     mxene_name = mxene.name
 
     if os.path.exists(file_path):
@@ -160,7 +160,7 @@ def testing(request,pk):
     structure = ase.io.read(poscar_file.url)
     supercell = ase.build.make_supercell(structure,[[4,0,0],[0,4,0],[0,0,1]])
     ase.io.write('abc.xyz',supercell,'xyz')
-    os.system('babel -xyz abc.xyz -mol abc.mol')
+    os.system('obabel -xyz abc.xyz -mol abc.mol')
     with open('abc1.mol') as f:
         mol = f.read()
 

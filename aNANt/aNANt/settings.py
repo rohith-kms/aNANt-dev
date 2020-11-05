@@ -14,8 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y2b^gfuo^@@78t(6#7p&q13-z)!s)z=lphz^p@kp1u802#(u@)'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['anant.mrc.iisc.ac.in']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -137,7 +137,9 @@ STATIC_ROOT = os.path.join(REPOSITORY_ROOT, 'static/')
 
 # Use this with development repo
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
+MEDIA_URL = '../media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 
