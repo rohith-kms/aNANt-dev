@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
+    <title>aNANt</title>
+  </head>
+  <body>
+
+    <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="../">Home</a>
+              <a href="../about/">About</a>
+              <a href="../publications/">Publications</a>
+              <a href="../acknowledgements/" class="current">Acknowledgements</a>
+              <a href="../contact/">Contact Us</a>
+
+            </nav>
+
+    </header>
+
+
+    <section id="content">
+      <div class="container">
+
+        <h1>Acknowledgements</h1>
+        <h4>Principal Investigator</h4>
+        <ul>
+          <li>Dr. Abhishek Kumar Singh</li>
+          <li>...</li>
+        </ul>
+        <h4>Database</h4>
+        <ul>
+          <li>Arunkumar C.R.</li>
+          <li>Avanish Mishra</li>
+          <li>...</li>
+        </ul>
+        <h4>Website Developers</h4>
+        <ul>
+          <li>Rohith K.M.S.</li>
+          <li>Avanish Mishra</li>
+          <li>Akash Singhla</li>
+          <li>...</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <footer>
+      Developed by Materials Theory and Simulations Group, Indian Institute of Science
+    </footer>
+
+
+  </body>
+</html>
