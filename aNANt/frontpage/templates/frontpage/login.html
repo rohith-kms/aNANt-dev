@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Homepage</title>
+	<style type="text/css">
+	/* CSS styles here... */
+	</style>
+	</head>
+	
+	<body>
+	
+	
+	<h3>Enter your login credentials:</h3>
+	
+	<form action="login/" method="post"> {% csrf_token %}
+	<input type="text" name="username" value="username">
+	<input type="password" name="password" value="password">
+	<input type="submit"><br><br>
+	<a href='register/'> Don't Have an Account ? Sign up instead </a>
+	</form>
+	
+	 
+	</body>
+	
+</html>

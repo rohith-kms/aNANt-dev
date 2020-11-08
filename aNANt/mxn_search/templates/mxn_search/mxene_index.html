@@ -46,6 +46,7 @@
 
     <section id="showcase">
       <div class="container">
+	<h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1>
         <h1>Welcome to the MXene database.</h1>
         <p>MXenes are a class of two-dimensional inorganic compounds. These materials consist of few atoms thick layers of transition metal carbides, nitrides, or carbonitrides. MXenes combine metallic conductivity of transition metal carbides and hydrophilic nature.</p>
       </div>
