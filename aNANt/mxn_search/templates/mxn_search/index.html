@@ -48,6 +48,8 @@
               <a href="../publications/">Publications</a>
 <!-- <a href="acknowledgements/">Acknowledgements</a> -->
               <a href="../contact/">Contact Us</a>
+	      <a href="../login_page/">Login</a>
+              {% if user.is_authenticated %}<a href="../logout/">Logout</a>{% endif %}
               
               
 
@@ -57,6 +59,7 @@
 
     <section id="showcase">
       <div class="container">
+	<h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1>
         <h1>aNANt MXene database</h1>
         <p>MXene has emerged as one of the promising class of 2D material with probably largest possible members (of the order of several tens of thousands). Over 23,000 MXene are uploaded to the database with their calculated properties to date, and we have planned to include more such scientific data.</p>
       </div>

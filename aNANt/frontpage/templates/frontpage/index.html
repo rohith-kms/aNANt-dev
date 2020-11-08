@@ -51,6 +51,8 @@
               <a href="publications/">Publications</a>
 
               <a href="contact/">Contact Us</a>
+	      <a href="../login_page/">Login</a>
+              {% if user.is_authenticated %}<a href="../logout/">Logout</a>{% endif %}
              
 
             </nav>
@@ -64,7 +66,7 @@
       <style>
        h5 { text-shadow: 2px 2px #FF0000; }
       </style>
-
+	<h5><h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1><h5>
         <h5><h1>Welcome to aNANt</h1></h5>
         <p>aNANt is an initiative of <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, <a href="http://mrc.iisc.ac.in" target="blank">Materials Research Centre</a>, <a href="http://iisc.ac.in" target="blank">Indian Institute of Science</a> Bangalore to develop and host an open-access online repository of functional materials. aNANt database shares the structures and electronic properties of computationally designed two-dimensional functional materials in a single platform. Currently, it hosts over 23,000 materials data. </p>
       </div>
