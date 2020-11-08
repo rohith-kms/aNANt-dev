@@ -25,6 +25,8 @@
               <a href="../publications/">Publications</a>
 <!-- <a href="acknowledgements/">Acknowledgements</a> -->
               <a href="../contact/">Contact Us</a>
+	      <a href="../login_page/">Login</a>
+              {% if user.is_authenticated %}<a href="../logout/">Logout</a>{% endif %}
 
 
             </nav>
