@@ -46,13 +46,13 @@
             <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
             <nav>
 
-              <a href=""  class="current">Home</a>
-              <a href="about/">About</a>
-              <a href="publications/">Publications</a>
+              <a href="/"  class="current">Home</a>
+              <a href="/about/">About</a>
+              <a href="/publications/">Publications</a>
 
-              <a href="contact/">Contact Us</a>
-	      <a href="../login_page/">Login</a>
-              {% if user.is_authenticated %}<a href="../logout/">Logout</a>{% endif %}
+              <a href="/contact/">Contact Us</a>
+	      <a href="/login_page/">Login</a>
+              {% if user.is_authenticated %}<a href="/logout/">Logout</a>{% endif %}
              
 
             </nav>
@@ -60,7 +60,7 @@
     </header>
 
 
-
+    {% block content %}
     <section id="showcase">
       <div class="container">
       <style>
@@ -101,6 +101,7 @@
       </a>
 
     </section>
+    {% endblock %}
 
     <footer>
       Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
