@@ -1,26 +1,18 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Homepage</title>
-	<style type="text/css">
-	/* CSS styles here... */
-	</style>
-	</head>
+{% extends 'frontpage/index.html' %}
+
 	
-	<body>
+{% block content %}
+	<br><br>
+	<h1 style="text-align:center;">Enter your login credentials</h1><br><br>
 	
-	
-	<h3>Enter your login credentials:</h3>
-	
+	<div align='center'>
 	<form action="login/" method="post"> {% csrf_token %}
-	<input type="text" name="username" value="username">
-	<input type="password" name="password" value="password">
-	<input type="submit"><br><br>
-	<a href='register/'> Don't Have an Account ? Sign up instead </a>
+	<input type="text" name="username" value="username" style="text-align:center; font-size:20pt" size="40" ><br><br>
+	<input type="password" name="password" value="password" style="text-align:center; font-size:20pt" size="40"><br><br>
+	<input type="submit" size="40" style="font-size : 16pt"><br><br>
+	<a href='register/'> Don't Have an Account ? Sign up instead </a><br><br>
+	<a href='password_reset/'> Forgot Password ? </a>
 	</form>
-	
-	 
-	</body>
-	
-</html>
+	</div>
+
+{% endblock %}
