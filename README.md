@@ -39,3 +39,9 @@ Project management for aNANt is done almost entirely through GitHub. We will rev
 
 8. If you are really sure of your changes, you can go ahead and [merge](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request) if you have permission. However, this is not recommended. Ideally before merging, we should all look at the pull request and [comment](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request) on it. Click on the links for detailed instructions on how to do each of these.
 
+9. Delete the branch you created. You can do this on the website.
+
+### 2.3 Imprtant notes while uploading to GitHub
+
+1. If you have installed any new python package, mention it in the `requirements.txt` file. This can then be used to install all required packages in one shot.
+
