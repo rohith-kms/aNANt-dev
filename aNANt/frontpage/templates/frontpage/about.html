@@ -10,30 +10,11 @@
     <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
     <title>aNANt</title>
   </head>
+  
   <body>
 
-    <header>
-            <div class="logotext">
-              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
-            </div>
-
-            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
-            <nav>
-
-              <a href="/"  class="current">Home</a>
-              <a href="/about/">About</a>
-              <a href="/publications/">Publications</a>
-
-              <a href="/contact/">Contact Us</a>
-	      <a href="/login_page/">Login</a>
-              {% if user.is_authenticated %}<a href="/logout/">Logout</a>{% endif %}
-             
-
-            </nav>
-
-    </header>
-
-
+    {% block header %}
+    {% endblock %}
 
     <section id="content">
       <div class="container">
