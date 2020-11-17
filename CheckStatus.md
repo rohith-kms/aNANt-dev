@@ -3,7 +3,7 @@
 This document contains instructions on checking the current status of development of aNANt. 
 It is assumed here that you have access to the aNANt server.
 
-1. `ssh` into the aNANt server. The LAN address is `abhishek@10.98.24.89`. 
+1. `ssh` into the aNANt server. The LAN address is `abhishek@10.98.24.89`. Go to the `aNANt-dev` folder.
 
 2. Run `sync.sh` script. This will bring the local clone up to date with all the remote branches.
 
