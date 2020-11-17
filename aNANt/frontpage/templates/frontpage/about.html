@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html>
-{% load static %}
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
-    <meta charset="utf-8">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
-    <title>aNANt</title>
-  </head>
-  
-  <body>
+{% extends 'frontpage/base.html' %} 
 
-    {% block header %}
-    {% endblock %}
+{% block content %}
 
-    <section id="content">
+  <section id="content">
       <div class="container">
       <style>
        h5 { text-shadow: 2px 2px #FF0000; }
@@ -54,9 +40,4 @@
       </div>
     </section>
 
-    <footer>
-      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
-    </footer>
-
-  </body>
-</html>
+{% endblock %}
