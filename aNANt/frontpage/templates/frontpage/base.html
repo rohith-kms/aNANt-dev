@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <title>aNANt</title>
+  </head>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120796848-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120796848-2');
+</script>
+
+  <body>
+
+    <style>
+    #showcase{
+
+      display: grid;
+      grid-template-columns: 1fr 7fr 1fr;
+      /*min-height: 300px;*/
+      background-color: white;
+      background-size: cover;
+      background-image: url("{% static 'frontpage/images/boa9.png' %}");
+      background-size: 40%;
+      background-repeat: repeat;
+      text-align: center;
+      padding: 20px 40px;
+      border-bottom: 5px solid #df861d;
+    }
+
+    </style>
+
+    <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="/"  class="current">Home</a>
+              <a href="/about/">About</a>
+              <a href="/publications/">Publications</a>
+
+              <a href="/contact/">Contact Us</a>
+	      <a href="/login_page/">Login</a>
+              {% if user.is_authenticated %}<a href="/logout/">Logout</a>{% endif %}
+             
+
+            </nav>
+
+    </header>
+
+
+    {% block content %}
+
+	<h1>Content goes here.</h1>
+
+    {% endblock %}
+
+    <footer>
+      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
+      <p>By using this site you are accepting the <a href={% static 'frontpage/TermsAndConditions.txt' %}>Terms and Conditions</a></p>
+    </footer>
+
+
+  </body>
+</html>
