@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'frontpage',
     'mxn_search',
     'crispy_forms'
+    'hardness_superalloy'
+    'creep_superalloy'
 ]
 
 MIDDLEWARE = [
