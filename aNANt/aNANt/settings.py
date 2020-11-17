@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontpage',
     'mxn_search',
-    'crispy_forms'
+    'crispy_forms',
+    'hardness_superalloy',
+    'creep_superalloy',
+
 ]
 
 MIDDLEWARE = [
