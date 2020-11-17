@@ -21,6 +21,8 @@ Project management for aNANt is done almost entirely through GitHub. We will rev
 
 - __Pull requests and merging:__ Once you have developed your branch to a sufficient point, it is time to `merge` it with the `main` branch. To do this, you will have to submit what is called a pull request. Go to the GitHub webpage and click on "compare and pull request". As with the commits, you will need to include a message along with your pull request. Make sure these messages are informative and to the point. If you are sure of your changes and you have permission, you can merge with the `main` branch. If you're not sure, get someone to review your changes and merge.
 
+- __Pulling:__ Before uploading any changes, it is always a good idea to sync your local repository with the remote. You can do this by using `git pull`
+
 ### 2.2 Step-by-step instructions:
 
 1. Create a branch through the GitHub website. If you're not sure how, click [here](https://docs.github.com/en/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/managing-branches)
@@ -33,15 +35,22 @@ Project management for aNANt is done almost entirely through GitHub. We will rev
 
 5. Commit your changes: `git commit -m "Informative commit message"
 
-6. When you reach a milestone, push your changes into the remote repo. `git push`
+6. Before pushing the changes to GitHub, pull the latest version of the branch from the remote repository using `git pull`. This will sync your local repository to any changes made by other contributers.
 
-7. Once you are done with the development of your feature, push your changes and create a pull request through the GitHub webpage. If youre not sure how, click [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi-gcDau_fsAhUOeisKHRiiCAEQ0gIoADAbegQIHBAJ&url=https%3A%2F%2Fdocs.github.com%2Fen%2Ffree-pro-team%40latest%2Fgithub%2Fcollaborating-with-issues-and-pull-requests%2Fcreating-a-pull-request&usg=AOvVaw3-FQu7PRhMBsDZ_4zbVTtw)
+7. When you reach a milestone, push your changes into the remote repo. `git push`
 
-8. If you are really sure of your changes, you can go ahead and [merge](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request) if you have permission. However, this is not recommended. Ideally before merging, we should all look at the pull request and [comment](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request) on it. Click on the links for detailed instructions on how to do each of these.
+8. Once you are done with the development of your feature, push your changes and create a pull request through the GitHub webpage. If youre not sure how, click [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi-gcDau_fsAhUOeisKHRiiCAEQ0gIoADAbegQIHBAJ&url=https%3A%2F%2Fdocs.github.com%2Fen%2Ffree-pro-team%40latest%2Fgithub%2Fcollaborating-with-issues-and-pull-requests%2Fcreating-a-pull-request&usg=AOvVaw3-FQu7PRhMBsDZ_4zbVTtw)
 
-9. Delete the branch you created. You can do this on the website.
+9. If you are really sure of your changes, you can go ahead and [merge](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request) if you have permission. However, this is not recommended. Ideally before merging, we should all look at the pull request and [comment](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request) on it. Click on the links for detailed instructions on how to do each of these.
 
-### 2.3 Imprtant notes while uploading to GitHub
+10. After your branch has been merged, delete the branch you created. You can do this on the website.
 
-1. If you have installed any new python package, mention it in the `requirements.txt` file. This can then be used to install all required packages in one shot.
+### 2.3 Important notes while uploading to GitHub
 
+1. If you have installed any new python package, mention it in the `requirements.txt` file. This can then be used to install all required packages in one shot, using the command `pip install -r requirements.txt`
+
+### 3. Frequently Asked Questions (FAQ)
+
+__I have cloned the repository, but 'python manage.py runserver' command is not running (module not found error):__
+
+You probably haven't installed all the necessary modules to run aNANt. Install all of them by running `pip install -r requirements.txt`. Make sure you're running Python 3 and not Python 2.
