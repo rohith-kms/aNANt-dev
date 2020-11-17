@@ -3,3 +3,5 @@ Django==2.2
 django-crispy-forms==1.9.2
 joblib==0.14.1
 opencv-python
+pandas
+xlrd==1.2.0
