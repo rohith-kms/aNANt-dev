@@ -48,3 +48,9 @@ Project management for aNANt is done almost entirely through GitHub. We will rev
 ### 2.3 Important notes while uploading to GitHub
 
 1. If you have installed any new python package, mention it in the `requirements.txt` file. This can then be used to install all required packages in one shot, using the command `pip install -r requirements.txt`
+
+### 3. Frequently Asked Questions (FAQ)
+
+__I have cloned the repository, but 'python manage.py runserver' command is not running (module not found error):__
+
+You probably haven't installed all the necessary modules to run aNANt. Install all of them by running `pip install -r requirements.txt`. Make sure you're running Python 3 and not Python 2.
