@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'mxn_search/style.css'%}">
-    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width initial-scale=1.0">
-    <meta name="description" content="computational database of mxenes">
-    <meta name="keywords" content="mxene, mxenes, mxene database">
-    <meta name="author" content="Rohith K.M.S">
-    <title>The MXene Database</title>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
-    </script>
-  </head>
-  <body>
-  
-      <style>
+{% extends 'mxn_search/base.html' %}
+{% load static %}
+  {% block style %}
+    <style>
       #showcase{
 
       display: grid;
@@ -30,36 +15,15 @@
       text-align: center;
       padding: 20px 40px;
       border-bottom: 5px solid #df861d;
-    }
+      }
 
     </style>
+  {% endblock %}
 
-
-    <header>
-            <div class="logotext">
-              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
-            </div>
-
-            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
-            <nav>
-
-              <a href="../" >Home</a>
-              <a href="../about/">About</a>
-              <a href="../publications/">Publications</a>
-<!-- <a href="acknowledgements/">Acknowledgements</a> -->
-              <a href="../contact/">Contact Us</a>
-	      <a href="../login_page/">Login</a>
-              {% if user.is_authenticated %}<a href="../logout/">Logout</a>{% endif %}
-              
-              
-
-            </nav>
-
-    </header>
-
+  {% block fullcontent %}
     <section id="showcase">
       <div class="container">
-	<h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1>
+	      <h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1>
         <h1>aNANt MXene database</h1>
         <p>MXene has emerged as one of the promising class of 2D material with probably largest possible members (of the order of several tens of thousands). Over 23,000 MXene are uploaded to the database with their calculated properties to date, and we have planned to include more such scientific data.</p>
       </div>
@@ -363,115 +327,114 @@
 
     </footer>
 
+  {% endblock %}
 
-  </body>
+  
+  {% block script %}
+    <script type="text/javascript">
 
-  <script type="text/javascript">
+    /* Field related Javascript */
 
-  /* Field related Javascript */
+    var marray = ['',''];
+    var x = '';
+    var tarray = ['',''];
+    var resVisible = 0;
 
-  var marray = ['',''];
-  var x = '';
-  var tarray = ['',''];
-  var resVisible = 0;
+    function update_details() {
 
-  function update_details() {
+      // Update HTML
+      $('#M1').html(marray[0]);
+      $('#M2').html(marray[1]);
+      $('#X').html(x);
+      $('#T1').html(tarray[0]);
+      $('#T2').html(tarray[1]);
 
-    // Update HTML
-    $('#M1').html(marray[0]);
-    $('#M2').html(marray[1]);
-    $('#X').html(x);
-    $('#T1').html(tarray[0]);
-    $('#T2').html(tarray[1]);
+      // Update form fields
+      $('#id_M1').attr('value',marray[0]);
+      $('#id_M2').attr('value',marray[1]);
+      $('#id_X').attr('value',x);
+      $('#id_T1').attr('value',tarray[0]);
+      $('#id_T2').attr('value',tarray[1]);
+    }
 
-    // Update form fields
-    $('#id_M1').attr('value',marray[0]);
-    $('#id_M2').attr('value',marray[1]);
-    $('#id_X').attr('value',x);
-    $('#id_T1').attr('value',tarray[0]);
-    $('#id_T2').attr('value',tarray[1]);
-  }
+    function clear_details(){
 
-  function clear_details(){
+      marray = ['',''];
+      x = '';
+      tarray = ['',''];
 
-    marray = ['',''];
-    x = '';
-    tarray = ['',''];
+      update_details();
+    }
 
-    update_details();
-  }
+    // Box click functions
 
-  // Box click functions
+    // Periodic table boxes
 
-  // Periodic table boxes
+    $('.box.carnit').click(function(e){
+      x = e.target.id;
+      update_details();
+    });
 
-  $('.box.carnit').click(function(e){
-    x = e.target.id;
-    update_details();
-  });
+    $('.box.metal').click(function(e){
+      if (marray[0]=='') {
+        marray[0] = e.target.id;}
 
-  $('.box.metal').click(function(e){
-    if (marray[0]=='') {
-      marray[0] = e.target.id;}
+      else if (marray[1]=='') {
+        marray[1] = e.target.id;}
 
-    else if (marray[1]=='') {
-      marray[1] = e.target.id;}
+      else {
+        marray.push(e.target.id);
+        marray.shift();}
 
-    else {
-      marray.push(e.target.id);
-      marray.shift();}
+      update_details();
+    });
 
-    update_details();
-  });
+    $('.box.funct').click(function(e){
+      if (tarray[0]=='') {
+        tarray[0] = e.target.id;}
 
-  $('.box.funct').click(function(e){
-    if (tarray[0]=='') {
-      tarray[0] = e.target.id;}
+      else if (tarray[1]=='') {
+        tarray[1] = e.target.id;}
 
-    else if (tarray[1]=='') {
-      tarray[1] = e.target.id;}
+      else {
+        tarray.push(e.target.id);
+        tarray.shift();}
 
-    else {
-      tarray.push(e.target.id);
-      tarray.shift();}
+      update_details();
+    });
+    // Top Boxes
 
-    update_details();
-  });
-  // Top Boxes
+    $('#M1').click(function(e){
+      marray[0] = '';
+      update_details();
+    });
+    $('#M2').click(function(e){
+      marray[1] = '';
+      update_details();
+    });
+    $('#X').click(function(e){
+      x = '';
+      update_details();
+    });
+    $('#T1').click(function(e){
+      tarray[0] = '';
+      update_details();
+    });
+    $('#T2').click(function(e){
+      tarray[1] = '';
+      update_details();
+    });
 
-  $('#M1').click(function(e){
-    marray[0] = '';
-    update_details();
-  });
-  $('#M2').click(function(e){
-    marray[1] = '';
-    update_details();
-  });
-  $('#X').click(function(e){
-    x = '';
-    update_details();
-  });
-  $('#T1').click(function(e){
-    tarray[0] = '';
-    update_details();
-  });
-  $('#T2').click(function(e){
-    tarray[1] = '';
-    update_details();
-  });
+    $('.searchButt').click(function(e){
+      $('.searchResults').show();
+    });
 
-  $('.searchButt').click(function(e){
-    $('.searchResults').show();
-  });
+    $('.clearButt').click(function(e){
+      $('.search-form')[0].reset()
+      clear_details();
+    });
 
-  $('.clearButt').click(function(e){
-    $('.search-form')[0].reset()
-    clear_details();
-  });
-
-
-
-
-  </script>
+    </script>
+  {% endblock %}
 
 </html>

@@ -1,81 +1,44 @@
-<!DOCTYPE html>
-<html>
-{% load static %}
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
-    <meta charset="utf-8">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
-    <title>aNANt</title>
-  </head>
-  <body>
+{% extends 'frontpage/base.html' %} 
 
-    <header>
-            <div class="logotext">
-              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
-            </div>
+{% block content %}
 
-            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
-            <nav>
-
-              <a href="/"  class="current">Home</a>
-              <a href="/about/">About</a>
-              <a href="/publications/">Publications</a>
-
-              <a href="/contact/">Contact Us</a>
-	      <a href="/login_page/">Login</a>
-              {% if user.is_authenticated %}<a href="/logout/">Logout</a>{% endif %}
-             
-
-            </nav>
-
-    </header>
-
-
-
-    <section id="content">
+  <section id="content">
       <div class="container">
-      <style>
-       h5 { text-shadow: 2px 2px #FF0000; }
-      </style>
+		  
+		<style>
+		h5 { text-shadow: 2px 2px #FF0000; }
+		</style>
 
         <h5><h1>About</h1></h5>
         <p>aNANt is an initiative of Materials Theory and Simulations Group, Materials Research Center, Indian Institute of Science Bangalore to develop and host an open-access online repository of functional materials. aNANt database shares the structures and electronic properties of computationally designed two-dimensional layered materials in a single platform. Currently, it hosts over 23,000 materials data. The database contains the optimized structure and electronic properties such as lattice constant and band gap, calculated at the Perdew-Burke-Ernzerhof (PBE) level using density functional theory (DFT).</p>
 	
-<div class="update" style="text-align:left;margin-top:50px;">
-	
-	<h3 style="font-size:1.5em;">Updates:</h3>
-	
-	<ul>
-		<br>
-		<li><b>> 24 September 2019:</b> 23,870 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 11 April 2019:</b> 21,332 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 29 March 2019:</b> 16,000 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 28 December 2018:</b> 23,870 MXenes uploaded to MXene database</li>
-		<li><b>> 1 December 2018:</b> 23,000 MXenes uploaded to MXene database</li>
-		<li><b>> 12 November 2018:</b> 22,000 MXenes uploaded to MXene database</li>
-		<li><b>> 14 October 2018:</b> 20,000 MXenes uploaded to MXene database</li>
-		<li><b>> 12 October 2018:</b> 19,000 MXenes uploaded to MXene database</li>
-		<li><b>> 18 September 2018:</b> 18,000 MXenes uploaded to MXene database</li>
-		<li><b>> 03 September 2018:</b> 17,000 MXenes uploaded to MXene database</li>
-		<li><b>> 20 August 2018:</b> 13,000 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 20 August 2018:</b> 15,000 MXenes uploaded to MXene database</li>
-		<li><b>> 30 July 2018:</b> 10,000 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 13 July 2018:</b> 1885 MXene band structure images and band gaps uploaded</li>
-		<li><b>> 12 July 2018:</b> 14,000 MXenes uploaded to MXene database</li>
-		<li><b>> 14 June 2018:</b> MXene database released with 11,000 MXenes</li>
-	</ul>
+		<div class="update" style="text-align:left;margin-top:50px;">
+			
+			<h3 style="font-size:1.5em;">Updates:</h3>
+			
+			<ul>
+				<br>
+				<li><b>> 24 September 2019:</b> 23,870 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 11 April 2019:</b> 21,332 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 29 March 2019:</b> 16,000 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 28 December 2018:</b> 23,870 MXenes uploaded to MXene database</li>
+				<li><b>> 1 December 2018:</b> 23,000 MXenes uploaded to MXene database</li>
+				<li><b>> 12 November 2018:</b> 22,000 MXenes uploaded to MXene database</li>
+				<li><b>> 14 October 2018:</b> 20,000 MXenes uploaded to MXene database</li>
+				<li><b>> 12 October 2018:</b> 19,000 MXenes uploaded to MXene database</li>
+				<li><b>> 18 September 2018:</b> 18,000 MXenes uploaded to MXene database</li>
+				<li><b>> 03 September 2018:</b> 17,000 MXenes uploaded to MXene database</li>
+				<li><b>> 20 August 2018:</b> 13,000 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 20 August 2018:</b> 15,000 MXenes uploaded to MXene database</li>
+				<li><b>> 30 July 2018:</b> 10,000 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 13 July 2018:</b> 1885 MXene band structure images and band gaps uploaded</li>
+				<li><b>> 12 July 2018:</b> 14,000 MXenes uploaded to MXene database</li>
+				<li><b>> 14 June 2018:</b> MXene database released with 11,000 MXenes</li>
+			</ul>
 
-</div>
+		</div>
 
       </div>
     </section>
 
-    <footer>
-      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
-    </footer>
-
-  </body>
-</html>
+{% endblock %}
