@@ -1,32 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'mxn_search/style.css'%}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width initial-scale=1.0">
-    <meta name="description" content="computational database of mxenes">
-    <meta name="keywords" content="mxene, mxenes, mxene database">
-    <meta name="author" content="Rohith K.M.S">
-    <title>The MXene Database</title>
+{% extends 'base.html' %}
 
-    <style media="screen">
-    #showcase{
-      min-height: 300px;
-      background-color: #d6e8fb;
-      background-size: cover;
 
-      text-align: center;
-      color: #0c4a8a;
-      padding: 20px 40px;
-      border-bottom: 5px solid #c2c2c2;
-    }
-    </style>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
-    </script>
-  </head>
-  <body>
+  {% block content %}
 
     <header>
       <div class="container">
@@ -346,22 +321,6 @@
 
 
 
-    <footer>
-<p><b>Calculation details: </b>Structure optimization and band gap calculation of the bb’ phase of MXene are performed by density functional theory (DFT) using the Vienna ab-initio simulation package (VASP). Electronic exchange correlations are treated by the Perdew-Burke-Ernzerhof (PBE) parameterization of GGA, and core-valance electron interactions are represented by projector augmented wave (PAW) potentials. Optimized plane wave basis set, fine k-grid and converged force criteria are used to optimize the structures.</p>
-
-      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
-
-<p><b>Disclaimer :</b> By using this site you acknowledge to agree the following:<br />
-
-The data in this database is computed and may not be accurate enough for your application. The developers, contributors and hosts are not liable for any inaccuracies in the data or consequences thereof. <br />
-
-You also agree not to use automated scripts to collect large fractions of the database without explicit permission from the hosts. If you plan to download large fraction of database, email us at anant@mrc.iisc.ac.in. <br />
-
- 
-    </footer>
-
-  </body>
-
   <script type="text/javascript">
 
   /* Field related Javascript */
@@ -469,5 +428,4 @@ You also agree not to use automated scripts to collect large fractions of the da
 
 
   </script>
-
-</html>
+ {% endblock %}

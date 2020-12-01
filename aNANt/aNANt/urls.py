@@ -21,11 +21,10 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mxenedb/',include('mxn_search.urls')),
-
+    path('forum/',include('forum.urls')),
     path('hardness/',include('hardness_superalloy.urls')),
     path('creep/',include('creep_superalloy.urls')),
     path('',include('frontpage.urls')),
 ]
 
 #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

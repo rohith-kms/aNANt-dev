@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <center>
+  <hr>
+  <h1>aNANt Forum</h1>
+  <hr>
+
+  <div class="user-stuff">
+
+    {% if user.is_authenticated %}
+
+    <p>You are logged in as {{user.username}}, you can post and comment.</p>
+    <a href="login/logout/">Logout</a>
+    <div class="post_field">
+      <h2>Post new thread:</h2>
+      <form action="make_post/" method="post"> {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="Enter thread title">
+        <br>
+        <input type="text" name="content" value="Enter text here">
+        <input type="submit" name="submit" value="Post">
+      </form>
+    </div>
+
+    {% else %}
+    <p>You are not logged in. You cannot post and comment.</p>
+    <a href="login/">Login</a>
+    {% endif %}
+
+    <!-- Feed with all the posts, as a table-->
+    <div class="feed">
+
+      <h2>Feed:</h2>
+
+      <table>
+
+      {% for post in posts %}
+
+      <tr>
+        <td class='user_det'><strong>{{post.author}} </strong> <br><i>{{post.created_date}}</i></td>
+        <td><a href="posts/{{post.pk}}">{{post.title|linebreaks}}</a></td>
+      </tr>
+
+      {% empty %}
+      <tr>No posts yet</tr>
+
+      {% endfor %}
+
+      </table>
+    </div>
+
+
+
+
+  </div>
+
+
+</center>
+
+{% endblock %}

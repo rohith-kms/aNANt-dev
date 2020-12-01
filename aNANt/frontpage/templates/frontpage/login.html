@@ -1,10 +1,10 @@
-{% extends 'frontpage/index.html' %}
+{% extends 'index.html' %}
 
-	
+
 {% block content %}
 	<br><br>
 	<h1 style="text-align:center;">Enter your login credentials</h1><br><br>
-	
+
 	<div align='center'>
 	<form action="login/" method="post"> {% csrf_token %}
 	<input type="text" name="username" value="username" style="text-align:center; font-size:20pt" size="40" ><br><br>

@@ -1,6 +1,7 @@
-{% extends 'mxn_search/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-  {% block style %}
+
+{% block style %}
     <style>
       #showcase{
 
@@ -18,9 +19,9 @@
       }
 
     </style>
-  {% endblock %}
+{% endblock %}
 
-  {% block fullcontent %}
+{% block content %}
     <section id="showcase">
       <div class="container">
 	      <h1>{% if user.is_authenticated %} Welcome {{ user.username }} {% else %} Welcome to Anant. Kindly log in.{% endif %}<h1>
@@ -321,17 +322,15 @@
 
     </div>
 
-    <footer>
 
-      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Center, Indian Institute of Science.
+{% endblock %}
 
-    </footer>
 
-  {% endblock %}
+{% block script %}
 
-  
-  {% block script %}
-    <script type="text/javascript">
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
 
     /* Field related Javascript */
 
@@ -434,7 +433,5 @@
       clear_details();
     });
 
-    </script>
-  {% endblock %}
-
-</html>
+</script>
+{% endblock %}

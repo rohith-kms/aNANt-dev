@@ -1,13 +1,13 @@
-{% extends 'mxn_search/base.html' %}
-  {% block fullcontent %}
+{% extends 'base.html' %}
+  {% block content %}
     <div class="searchResults">
 
       <h1>{{ number_of_results }} results found</h1>
-      
+
       <a href="../" style="float:right; margin-right:25px;">&laquo; Go back to search</a>
       <br>
 
-      {% block content %}
+      {% block list_results %}
 
       <table>
         {% if mxenes %}

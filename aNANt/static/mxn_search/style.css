@@ -50,6 +50,20 @@ header img{
   width: 100%;
 }
 
+footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+  height: 30%;
+  margin-top: 60px;
+  border-top: 5px solid #df861d;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 nav{
   grid-column: 1/3;
   grid-row: 2;

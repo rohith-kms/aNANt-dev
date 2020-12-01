@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 
 <html>
+
   <head>
     <meta charset="utf-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'frontpage/style.css'%}">
+    <link rel="stylesheet" href="{% static 'mxn_search/style.css'%}">
     <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
     <title>aNANt</title>
   </head>
-  
+
+{% block head %}
+{% endblock %}
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120796848-2"></script>
 <script>
@@ -19,10 +24,10 @@
   gtag('config', 'UA-120796848-2');
 </script>
 
-  <body>
+<body>
 
-    <style>
-    #showcase{
+<style>
+  #showcase{
 
       display: grid;
       grid-template-columns: 1fr 7fr 1fr;
@@ -37,9 +42,13 @@
       border-bottom: 5px solid #df861d;
     }
 
-    </style>
+</style>
 
-    <header>
+{% block style %}
+<!-- Any additional style elements go here. -->
+{% endblock %}
+
+<header>
             <div class="logotext">
               <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
             </div>
@@ -55,19 +64,22 @@
               {% if user.is_authenticated %}<a href="/logout/">Logout</a>{% endif %}
 
             </nav>
-    </header>
+</header>
 
 
-    {% block content %}
+{% block content %}
+	<!-- content goes here -->
+{% endblock %}
 
-	<h1>Content goes here.</h1>
+{% block script %}
+<!-- Any additional scripts go here-->
+{% endblock %}
 
-    {% endblock %}
 
-    <footer>
-      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
-      <p>By using this site you are accepting the <a href={% static 'frontpage/TermsAndConditions.txt' %}>Terms and Conditions</a></p>
-    </footer>
+<footer>
+  Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
+  <p>By using this site you are accepting the <a href={% static 'frontpage/TermsAndConditions.txt' %}>Terms and Conditions</a></p>
+</footer>
 
 
   </body>
