@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'creep_superalloy/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'frontpage/icon.ico'%}">
+    <title>aNANt</title>
+  </head>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120796848-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120796848-2');
+</script>
+
+  <body>
+
+    <style>
+    #showcase{
+
+      display: grid;
+      grid-template-columns: 1fr 7fr 1fr;
+      /*min-height: 300px;*/
+      background-color: white;
+      background-size: cover;
+      background-image: url("{% static 'frontpage/images/boa9.png' %}");
+      background-size: 40%;
+      background-repeat: repeat;
+      text-align: center;
+      padding: 20px 40px;
+      border-bottom: 5px solid #df861d;
+    }
+
+    </style>
+
+    <header>
+            <div class="logotext">
+              <img src="{% static 'frontpage/images/logo3.png' %}" alt="" height=140px>
+            </div>
+
+            <img src="{% static 'frontpage/images/bg8.png' %}" alt="" height="140px">
+            <nav>
+
+              <a href="../">Home</a>
+              <a href="../about/">About</a>
+              <a href="../publications/">Publications</a>
+
+              <a href="../contact/">Contact Us</a>
+             
+
+            </nav>
+
+    </header>
+
+
+<h1><center>
+Please enter the data given below. Mentioning each data is mandatory.
+</center></h1>
+<br>
+<br>
+<section>
+<center>
+      <form class="hardness-form" action="result/" method="post">
+        {% csrf_token %}
+      <table> 
+<tr><h3>The compositions are to be given in weight percentage.</h3></tr>
+<tr>   <td>  Al:  {{ form.Al }}</td><td>  Co: {{ form.Co }}</td><td>  Nb: {{ form.Nb }}</td></tr>
+<tr>   <td>  Mo:  {{ form.Mo }}</td><td>  Hf: {{ form.Hf }}</td><td>  Ta: {{ form.Ta }}</td></tr>
+<tr>   <td>  W:   {{ form.W }}</td><td>   B:  {{ form.B }}</td><td>   Ru: {{ form.Ru }}</td></tr>
+<tr>   <td>  Ti:  {{ form.Ti }}</td><td>   V: {{ form.V }}</td><td>  Cr: {{ form.Cr }}</td></tr>
+<tr>   <td>  Mn:  {{ form.Mn }}</td><td>  Fe: {{ form.Fe }}</td><td>  Ni: {{ form.Ni }}</td></tr>
+<tr>   <td>  Cu:  {{ form.Cu }}</td><td>  Zn: {{ form.Zn }}</td><td>  Zr: {{ form.Zr }}</td></tr>
+<tr>   <td>  Rh:  {{ form.Rh }}</td><td>  Re: {{ form.Re }}</td><td>   C: {{ form.C }}</td></tr>
+<tr>   <td>  Si:  {{ form.Si }}</td><td>   P: {{ form.P }}</td><td>   S: {{ form.S }}</td></tr>
+<tr>   <td>  </td><td>   N: {{ form.N }}</td><td></td> </tr>
+</table>
+<table>
+<tr><h3>The annealing conditions are to be given in degree Celcius and hours</h3></tr>
+<tr><td>Annealing temp 1: {{form.ann_temp1}}</td><td>Annealing time 1: {{form.ann_time1}}</td></tr>
+<tr><td>Annealing temp 2: {{form.ann_temp2}}</td><td>Annealing time 2: {{form.ann_time2}}</td></tr>
+</table>
+<table>
+<tr><h3>The testing conditions are to be given here </h3></tr>
+<tr><td>Temperature of measurement(C): {{form.temperature}}</td><td>Stress(MPa): {{form.stress}}</td></tr>
+       </table>
+
+
+       <div class="wrap" style="display:table;">
+          <button type="submit" name="button" class="searchButt">Search!</button>
+          <button type="button" name="button" class="clearButt">Clear</button>
+        </div>
+
+      </form>
+</center>
+
+
+</section>
+<br>
+<br>
+    <footer>
+      Developed by <a href="http://mrc.iisc.ernet.in/~abhishek" target="blank">Materials Theory and Simulations Group</a>, Materials Research Centre, Indian Institute of Science.
+      <p>By using this site you are accepting the <a href={% static 'frontpage/TermsAndConditions.txt' %}>Terms and Conditions</a></p>
+    </footer>
+
+
+  </body>
+<!--
+<script>
+  $('.searchButt').click(function(e){
+    $('.creepResults').show();
+  });
+
+  $('.clearButt').click(function(e){
+    $('.hardness-form')[0].reset()
+    clear_details();
+  });
+
+</script> -->
+</html>
