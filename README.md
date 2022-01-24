@@ -2,10 +2,12 @@
 
 ## 1 Introduction
 
-Developer repository for aNANt materials database. Owned by ThSim group from MRC, IISc.
+aNANt is a first-of-its-kind 2D materials database hosted by the Theory and Simulations (ThSim) Group from the Materials Research Center at the Indian Institute of Science. Currently, it contains the data for over 23,000 MXenes, with more to come.
+
+Please check it out at: [anant.mrc.iisc.ac.in](anant.mrc.iisc.ac.in)
 
 
-## 2 Contributing to aNANt:
+## 2 Contributing to aNANt (instructions for lab members):
 
 Project management for aNANt is done almost entirely through GitHub. We will review some useful git concepts in the following subsection, followed by step-by-step instructions on making changes to the code.
 
